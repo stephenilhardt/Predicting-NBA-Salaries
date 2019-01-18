@@ -1,17 +1,7 @@
 from __future__ import print_function, division
-import sys
-import os
-import numpy as np
 import pandas as pd
-import matplotlib.pyplot as plt
 from bs4 import BeautifulSoup
-from selenium import webdriver
-from selenium.webdriver.common.keys import Keys
-import time
 import requests
-from fake_useragent import UserAgent
-import random
-import re
 
 def get_unique_stats(soup_url):
     unique_stats = []

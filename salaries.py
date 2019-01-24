@@ -7,6 +7,7 @@ def get_page_salaries(url):
     frame = pd.DataFrame()
     soup = BeautifulSoup(requests.get(url).text, 'html5')
     rows = soup.find('table').find_all('tr')
+
     for row in rows:
         data = row.find_all('td')
         data_row = []
@@ -31,7 +32,3 @@ def get_salary_data(url):
 
     df = pd.concat(dfs)
     return df
-
-df = get_salary_data(url)
-
-df

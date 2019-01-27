@@ -4,6 +4,7 @@ from bs4 import BeautifulSoup
 import requests
 
 def get_unique_advanced_stats(soup_url):
+    
     unique_stats = []
     for stat in soup_url.find_all(attrs={'data-stat': True}):
         unique_stats.append(stat['data-stat'])
@@ -23,8 +24,6 @@ def get_player_advanced_stats(soup_url, stats):
 
     return new_df
 
-url = 'https://www.basketball-reference.com/leagues/NBA_{}_advanced.html'
-
 def get_player_advanced_data(url):
     years = [2006, 2007, 2008, 2009, 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2019]
     dfs = []
@@ -41,5 +40,10 @@ def get_player_advanced_data(url):
 
         dfs.append(year_df)
 
-    frame = pd.concat(dfs)
+    frame = pd.concat(dfs, sort=False)
     return frame
+
+advanced_url = 'https://www.basketball-reference.com/leagues/NBA_{}_advanced.html'
+
+if __name__ == "__main__":
+    get_player_advanced_data(advanced_url)

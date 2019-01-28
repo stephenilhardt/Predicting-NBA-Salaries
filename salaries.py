@@ -11,8 +11,9 @@ def get_page_salaries(url):
     Returns DataFrame
     '''
     frame = pd.DataFrame()
-    soup = BeautifulSoup(requests.get(url).text, 'html5', features="html5lib")
-    rows = soup.find('table').find_all('tr')
+    soup = BeautifulSoup(requests.get(url).text, "html5lib")
+    rows = soup.find('table')
+    rows = soup.find_all('tr')
 
     for row in rows:
         data = row.find_all('td')
